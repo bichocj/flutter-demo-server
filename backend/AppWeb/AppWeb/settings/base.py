@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'accounts.apps.AccountsConfig',
     'dashboard.apps.DashboardConfig',
+    'clients.apps.ClientsConfig',    
+    'sales.apps.SalesConfig',    
 
     'rest_framework',
     'rest_framework.authtoken',
@@ -148,7 +150,7 @@ ACCOUNT_USERNAME_BLACKLIST = ['admin']
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        # 'rest_framework.authentication.SessionAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
