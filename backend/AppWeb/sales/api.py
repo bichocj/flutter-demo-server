@@ -8,3 +8,6 @@ class ProductViewSet(viewsets.ModelViewSet):
 class OrderViewSet(viewsets.ModelViewSet):    
     serializer_class = serializers.OrderSerializer
     queryset = models.Order.objects.all()
+
+    #filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('client',)

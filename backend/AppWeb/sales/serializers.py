@@ -1,5 +1,6 @@
 from rest_framework import exceptions, serializers
 from . import models
+from clients.serializers import ClientSerializer
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -7,7 +8,7 @@ class ProductSerializer(serializers.ModelSerializer):
             fields = '__all__'
 
 class OrderItemSerializer(serializers.ModelSerializer):
-    #product = ProductSerializer()
+    product = ProductSerializer()
 
     class Meta:
             model = models.OrderItem
@@ -15,7 +16,8 @@ class OrderItemSerializer(serializers.ModelSerializer):
             #fields = ('product','quantity','total')
 
 class OrderSerializer(serializers.ModelSerializer):
-    items = OrderItemSerializer()
+    items = OrderItemSerializer(many=True, read_only=True)
+    client = ClientSerializer()
     class Meta:
             model = models.Order
-            fields = ('client', 'items')
+            fields = ('client', 'items',)
